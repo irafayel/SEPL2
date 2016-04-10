@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--content-->
 <div class="content-mid">
     <label class="line"></label>
-    <h3>Content</h3>
+    <h3>Content really?</h3>
 
     <label class="line"></label>
 </div>
