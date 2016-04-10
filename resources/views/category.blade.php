@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Paint Pal</title>
+    <title>Paint Buddy</title>
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
     <script src="js/jquery.min.js"></script>
     <!-- Custom Theme files -->
