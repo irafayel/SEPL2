@@ -112,6 +112,8 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('categories', 'PageController@catload');
 
+	Route::get('custom_cat', 'PageController@customcatload');
+
 	Route::get('category/delete/{id}', 'PageController@deletecat');
 
 	Route::get('image/delete/{id}', 'PageController@deleteimage');
