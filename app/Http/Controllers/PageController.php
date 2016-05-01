@@ -7,12 +7,33 @@ use App\test2;
 use App\categories;
 use App\test;
 use App\image;
+use App\customrequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller {
 
 
+
+    public function testSave(Request $request)
+    {
+
+
+        $test = $request->input('cat_id');
+
+        $crequest = new customrequest();
+
+        $crequest->code=$request->input('cat_id');
+        $crequest->user_id=1;
+
+        $crequest->save();
+
+        $table = customrequest::find(18);
+
+        //echo "<script type='text/javascript'>alert('$test');</script>";
+
+        return view('test_cat')->with('test',$table);
+    }
 
     //Uploading Image
     public function doImageUpload(Request $request)
@@ -36,6 +57,7 @@ class PageController extends Controller {
             'file_size' => $file->getClientSize(),
             'file_path' => 'images/' . $filename
         ]);*/
+
 
 
 

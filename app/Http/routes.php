@@ -100,6 +100,8 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::post('category/do-upload', 'PageController@doImageUpload');
 
+	Route::post('testsave', 'PageController@testSave');
+
 	Route::post('category/save', 'PageController@savecat');
 
 	Route::post('category/update/{id}', 'PageController@updatecat');
