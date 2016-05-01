@@ -52,7 +52,7 @@
                     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                         <ul class="nav navbar-nav nav_1">
                             <li><a class="color" href="{{url('categories')}}">Categories</a></li>
-                            <li><a class="color3" href="#">Customized Request</a></li>
+                            <li><a class="color3" href="{{url('custom_cat')}}">Customized Request</a></li>
                             <li><a class="color3" href="#">Trending</a></li>
                             <li><a class="color4" href="#">Latest</a></li>
                             <li><a class="color5" href="#">About Us</a></li>

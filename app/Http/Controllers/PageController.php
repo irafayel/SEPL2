@@ -146,6 +146,12 @@ class PageController extends Controller {
         return view('categories')->with('categories',$categories);
     }
 
+    public function customcatload()
+    {
+
+        return view('custom_cat');
+    }
+
     //delete category
     public function deletecat($id)
     {
