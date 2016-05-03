@@ -73,18 +73,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <section>
 
-    <div>
-        <div class="col-md-3 bottom-grids-left">
-            <canvas id="canvas" width="400" height="300" style =" border:1px solid">
+            <canvas id="canvas" width="800" height="500" style =" border:1px solid">
                 This text is displayed if your browser does not support HTML5 Canvas.
             </canvas>
-        </div>
 
-        <div class="col-md-3 bottom-grids-right">
             <button class="btn btn-lg btn-primary" onClick=drawImage("{{$test->code}}")>Draw</button>
-        </div>
-
-
 
     </div>
 

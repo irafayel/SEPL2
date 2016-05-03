@@ -68,11 +68,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         }
 
+        function drawCircle(){
+            addCircle(canvas.width/2 - (SIZE * 2.5), canvas.height/2, SIZE, "#006699");
+            stage.update();
+        }
 
     </script>
 
 </head>
-<body>
+<body onload="init();">
 @include('mainmenu')
 
 
@@ -86,12 +90,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <div class="col-md-3 bottom-grids-right">
-                <button class="btn btn-lg btn-primary" >Draw 1</button>
-                <button class="btn btn-lg btn-primary" >Draw 2</button>
-                <button class="btn btn-lg btn-primary" >Draw 3</button>
-                <button class="btn btn-lg btn-primary" >Draw 4</button>
-                <button class="btn btn-lg btn-primary" >Draw 5</button>
-                <button class="btn btn-lg btn-primary" >Draw 6</button>
+                <div><button class="btn btn-lg btn-primary" onClick="drawCircle()">Draw 1</button></div>
+                <div><button class="btn btn-lg btn-primary" >Draw 2</button></div>
+                <div><button class="btn btn-lg btn-primary" >Draw 3</button></div>
+                <div><button class="btn btn-lg btn-primary" >Draw 4</button></div>
+                <div><button class="btn btn-lg btn-primary" >Draw 5</button></div>
+                <div><button class="btn btn-lg btn-primary" >Draw 6</button></div>
             </div>
 
             <form method="POST" action="{{url('testsave')}}"  id="addImages" name ="addImages">
@@ -120,136 +124,83 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     </div>
 
-   <!-- <script type="text/javascript">
 
-        var canvas;
-        var ctx;
-        var x = 75;
-        var y = 50;
-        var WIDTH = 800;
-        var HEIGHT = 500;
-        var dragok = false;
-
-        function rect(x,y,w,h) {
-            ctx.beginPath();
-            ctx.rect(x,y,w,h);
-            ctx.closePath();
-            ctx.fill();
-        }
-
-        function clear() {
-            ctx.clearRect(0, 0, WIDTH, HEIGHT);
-        }
-
-        function init() {
-            canvas = document.getElementById("canvas");
-            ctx = canvas.getContext("2d");
-
-            return setInterval(draw, 10);
-        }
-
-        function draw() {
-            clear();
-            ctx.fillStyle = "#FAF7F8";
-            rect(0,0,WIDTH,HEIGHT);
-            ctx.fillStyle = "#444444";
-            rect(x - 15, y - 15, 30, 30);
-        }
-
-        function myMove(e){
-            if (dragok){
-                x = e.pageX - canvas.offsetLeft;
-                y = e.pageY - canvas.offsetTop;
-            }
-        }
-
-        function myDown(e){
-            if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
-                    canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
-                    e.pageY > y -15 + canvas.offsetTop){
-                x = e.pageX - canvas.offsetLeft;
-                y = e.pageY - canvas.offsetTop;
-                dragok = true;
-                canvas.onmousemove = myMove;
-            }
-        }
-
-        function myUp(){
-            dragok = false;
-            canvas.onmousemove = null;
-        }
-
-        init();
-        canvas.onmousedown = myDown;
-        canvas.onmouseup = myUp;
-
-    </script> -->
+<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 
 <script>
 
+    var stage;
+    var SIZE = 50;
 
     var canvas;
-    var ctx;
-    var x = 75;
-    var y = 50;
-    var dx = 5;
-    var dy = 3;
-    var WIDTH = 800;
-    var HEIGHT = 500;
-    var dragok = false,
-            text = "Hey there im movin!",
-            textLength = (text.length * 14)/2;
 
-    function rect(x,y,w,h) {
-        ctx.font = "14px Arial";
-        ctx.fillText("Hey there im a movin!!", x, y);
-    }
 
-    function clear() {
-        ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    }
 
     function init() {
+        //resize canvas to full width and height
+
         canvas = document.getElementById("canvas");
-        ctx = canvas.getContext("2d");
-        return setInterval(draw, 10);
+
+        canvas.width = 800;
+        canvas.height = 500;
+
+        stage = new createjs.Stage(canvas);
+
+        alert("i loaded");
+
+        addCircle(canvas.width/2 - (SIZE * 2.5), canvas.height/2, SIZE, "#e74c3c");
+        addStar(canvas.width/2, canvas.height/2, SIZE, "#f1c40f");
+        addRoundedSquare(canvas.width/2 + (SIZE * 2.5), canvas.height/2, SIZE * 2, 5, "#9b59b6");
+
+        stage.update();
     }
 
-    function draw() {
-        clear();
-        ctx.fillStyle = "#FAF7F8";
-        ctx.fillStyle = "#444444";
-        rect(x - 15, y + 15, textLength, 30);
+    function addCircle(x, y, r, fill) {
+        var circle = new createjs.Shape();
+        circle.graphics.beginFill(fill).drawCircle(0, 0, r);
+        circle.x = x;
+        circle.y = y;
+        circle.name = "circle";
+        circle.on("pressmove",drag);
+        stage.addChild(circle);
     }
 
-    function myMove(e){
-        if (dragok){
-            x = e.pageX - canvas.offsetLeft;
-            y = e.pageY - canvas.offsetTop;
+    function addStar(x, y, r, fill) {
+        var star = new createjs.Shape();
+        star.graphics.beginFill(fill).drawPolyStar(0, 0, r, 5, 0.6, -90);
+        star.x = x;
+        star.y = y;
+        star.name = "star";
+        star.on("pressmove",drag);
+        stage.addChild(star);
+    }
+
+    function addRoundedSquare(x, y, s, r, fill) {
+        var square = new createjs.Shape();
+        square.graphics.beginFill(fill).drawRoundRect(0, 0, s, s, r);
+        square.x = x - s/2;
+        square.y = y - s/2;
+        square.name = "square";
+        square.on("pressmove",drag);
+        stage.addChild(square);
+    }
+
+    function drag(evt) {
+        // target will be the container that the event listener was added to
+        if(evt.target.name == "square") {
+            evt.target.x = evt.stageX - SIZE;
+            evt.target.y = evt.stageY - SIZE;
         }
-    }
-
-    function myDown(e){
-        if (e.pageX < x + textLength + canvas.offsetLeft && e.pageX > x - textLength + canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
-                e.pageY > y -15 + canvas.offsetTop){
-            x = e.pageX - canvas.offsetLeft;
-            y = e.pageY - canvas.offsetTop;
-            dragok = true;
-            canvas.onmousemove = myMove;
+        else  {
+            evt.target.x = evt.stageX;
+            evt.target.y = evt.stageY;
         }
-    }
 
-    function myUp(){
-        dragok = false;
-        canvas.onmousemove = null;
+        // make sure to redraw the stage to show the change
+        stage.update();
     }
-
-    init();
-    canvas.onmousedown = myDown;
-    canvas.onmouseup = myUp;
 
 </script>
-
 
 
 @include('footer')
