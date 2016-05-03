@@ -28,7 +28,7 @@ class PageController extends Controller {
 
         $crequest->save();
 
-        $table = customrequest::find(18);
+        $table = customrequest::find(22);
 
         //echo "<script type='text/javascript'>alert('$test');</script>";
 

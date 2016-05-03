@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="easeljs" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://D:/SLIIT/3rd Year 1st Sem/SEP/EaselJS-0.8.2/src/easeljs" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://D:/SLIIT/3rd Year 1st Sem/SEP/EaselJS-0.8.2/src/easeljs" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
