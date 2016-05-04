@@ -91,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <div class="col-md-3 bottom-grids-right">
                 <div><button class="btn btn-lg btn-primary" onClick="drawCircle()">Draw 1</button></div>
-                <div><button class="btn btn-lg btn-primary" >Draw 2</button></div>
+                <div><button class="btn btn-lg btn-primary" onClick="addText()">Draw 2</button></div>
                 <div><button class="btn btn-lg btn-primary" >Draw 3</button></div>
                 <div><button class="btn btn-lg btn-primary" >Draw 4</button></div>
                 <div><button class="btn btn-lg btn-primary" >Draw 5</button></div>
@@ -107,16 +107,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </canvas>
 
 
+                <input id="field1" value="">
 
                 <input type="hidden" value ="" id="cat_id" name="cat_id">
 
                 <div class="col-md-3 bottom-grids-right">
                     <button style ="" class="btn btn-lg btn-primary" onClick="saveImage()" id="button">Save</button>
                 </div>
-
-
-
-
             </form>
 
 
@@ -146,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         stage = new createjs.Stage(canvas);
 
-        alert("i loaded");
+        //alert("i loaded");
 
         addCircle(canvas.width/2 - (SIZE * 2.5), canvas.height/2, SIZE, "#e74c3c");
         addStar(canvas.width/2, canvas.height/2, SIZE, "#f1c40f");
@@ -183,6 +180,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         square.name = "square";
         square.on("pressmove",drag);
         stage.addChild(square);
+    }
+
+    function addText(){
+
+
+
+        var text=new createjs.Text("Hello");
+
+
+
+        text.x=100;
+        text.y=100;
+
+        //alert("hai");
+
+        text.on("pressmove",drag);
+
+        stage.addChild(text);
+        stage.update();
     }
 
     function drag(evt) {

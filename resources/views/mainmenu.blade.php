@@ -10,7 +10,7 @@
         <div class="container">
             <div class="col-sm-5 col-md-offset-2  header-login">
                 <ul >
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="{{url('login')}}">Login</a></li>
                     <li><a href="register.html">Register</a></li>
 
                 </ul>
