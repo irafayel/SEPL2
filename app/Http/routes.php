@@ -33,6 +33,7 @@ use App\User;
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::auth();
 	Route::get('view1', array('as' => 'view1', 'uses' => 'PageController@product1') );
 
 	Route::get('welcome', function()
@@ -137,4 +138,10 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/temp', function(){
 		return view('tempindex');
 	});
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

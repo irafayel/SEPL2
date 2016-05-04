@@ -11,7 +11,7 @@
             <div class="col-sm-5 col-md-offset-2  header-login">
                 <ul >
                     <li><a href="{{url('login')}}">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="{{url('register')}}">Register</a></li>
 
                 </ul>
             </div>

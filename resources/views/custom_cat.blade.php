@@ -73,6 +73,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             stage.update();
         }
 
+        var i =0;
+
+        function add() {
+
+
+
+            //Create an input type dynamically.
+            var textfield = document.createElement("input");
+
+            //Assign different attributes to the element.
+            textfield.setAttribute("type", Text);
+            textfield.setAttribute("value", "");
+            textfield.setAttribute("id", "Text"+i);
+
+            var label = document.createElement("label");
+
+            label.setAttribute("type", label);
+            label.setAttribute("value", "Text Field" + i);
+            label.setAttribute("id", "label"+i);
+
+
+
+            var foo = document.getElementById("fooBar");
+
+
+            i++;
+            //Append the element in page (in span).
+            foo.appendChild(textfield);
+            foo.appendChild(label);
+
+            document.getElementById("label"+i).innerHTML = 'hai';
+
+        }
+
     </script>
 
 </head>
@@ -96,7 +130,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div><button class="btn btn-lg btn-primary" >Draw 4</button></div>
                 <div><button class="btn btn-lg btn-primary" >Draw 5</button></div>
                 <div><button class="btn btn-lg btn-primary" >Draw 6</button></div>
+
+                <div id="fooBar">
+
+
+
+                </div>
+
             </div>
+
+
 
             <form method="POST" action="{{url('testsave')}}"  id="addImages" name ="addImages">
                 {{ csrf_field() }}
@@ -106,13 +149,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         This text is displayed if your browser does not support HTML5 Canvas.
                     </canvas>
 
-
-                <input id="field1" value="">
-
                 <input type="hidden" value ="" id="cat_id" name="cat_id">
 
                 <div class="col-md-3 bottom-grids-right">
                     <button style ="" class="btn btn-lg btn-primary" onClick="saveImage()" id="button">Save</button>
+
+                    <SELECT name="element">
+                        <OPTION value="button">Button</OPTION>
+                        <OPTION value="text">Textbox</OPTION>
+                        <OPTION value="radio">Radio</OPTION>
+                    </SELECT>
+
+                    <!--document.forms[0].element.value-->
+
+                    <INPUT class="btn btn-lg btn-primary" type="button" value="Add" onclick="add()"/>
                 </div>
             </form>
 
@@ -184,11 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     function addText(){
 
-
-
         var text=new createjs.Text("Hello");
-
-
 
         text.x=100;
         text.y=100;
