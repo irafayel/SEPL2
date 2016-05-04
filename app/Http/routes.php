@@ -88,6 +88,12 @@ Route::group(['middleware' => ['web']], function () {
         return view('addcat');
     });*/
 
+	Route::get('login',function(){
+		return view('login');
+	});
+
+	Route::post('login/do-login', 'Auth\AuthController@doLogin');
+
 	Route::post('test2/save', 'PageController@save');
 
 	Route::get('test2/list', 'PageController@tablelist');
